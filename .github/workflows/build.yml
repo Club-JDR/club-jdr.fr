@@ -21,6 +21,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
@@ -39,7 +42,7 @@ jobs:
           sudo update-locale LANG=fr_FR.UTF-8
     - name: Tests with Pytest
       run: |
-         python -m pytest test --cov website --cov-report xml --junitxml=junit.xml
+        python -m pytest test --cov website --cov-report xml:coverage.xml --junitxml=junit.xml
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       env:
