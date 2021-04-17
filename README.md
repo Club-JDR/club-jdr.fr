@@ -2,6 +2,7 @@
 
 ![](website/static/img/jdr.png)
 
+![tests](https://github.com/notsag/club-jdr.fr/actions/workflows/build.yml/badge.svg?branch=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=notsag_club-jdr.fr&metric=alert_status)](https://sonarcloud.io/dashboard?id=notsag_club-jdr.fr)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 =======
