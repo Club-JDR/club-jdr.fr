@@ -181,3 +181,7 @@ pre {
 .error {
     color: #cc4747 !important;
 }
+
+img {
+    max-width: 100%;
+}
