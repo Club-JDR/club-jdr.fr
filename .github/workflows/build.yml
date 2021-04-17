@@ -43,6 +43,9 @@ jobs:
     - name: Tests with Pytest
       run: |
         python -m pytest test --cov website --cov-report xml:coverage.xml --junitxml=junit.xml
+    - name: Fix code coverage paths
+      run: |
+        sed -i 's#/home/runner/work/club-jdr.fr/club-jdr.fr/#/github/workspace/#g' coverage.xml
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       env:
