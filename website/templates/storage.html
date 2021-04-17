@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}Ressources{% endblock %}
+{% block content %}
+<article class="post featured">
+  <header class="">
+    <h2>Ressources</h2>
+  </header>
+  <div>
+    <p>
+    Vous trouverez dans cette section toutes les ressources partagées par les différents GMs du serveur, triées par système.
+    Pour ajouter des ressources ou tout autre problème, contacter <strong>Notsag</strong> sur le serveur.
+    </p>
+  </div>
+</article>
+<section class="posts">
+  {% for game in data['games'] %}
+  <article>
+    <header class="">
+        <img src="/static/img/{{ game }}.png" class="small-image" alt="{{ game }}" />
+    </header>
+    <div class="justify">
+      {% for section in data['games'][game] %}
+      <h3>{{ section }}</h3>
+      <ul>
+        {% for item in data['games'][game][section] %}
+        <li>
+            <strong><a href="{{ item['url'] }}">{{ item['title'] }} : </a></strong>
+          <span>{{ item['description'] }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    </div>
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

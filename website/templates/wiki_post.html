@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}{{ post.title }}{% endblock%}
+{% block content %}
+<article class="post featured">
+  <header class="major blog">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.summary }}</p>
+  </header>
+  <div class="row content">
+    <div class="post-content">{{ post.content_html|safe }}</div>
+  </div>
+  </div>
+</article>
+{% endblock %}

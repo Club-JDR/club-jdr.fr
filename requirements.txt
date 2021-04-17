@@ -1,0 +1,7 @@
+flask==1.1.2
+Flask-WTF==0.14.3
+flask-discord==0.1.64
+pyjwt==2.0.1
+mistune==0.8.3
+Pygments==2.2.0
+gunicorn

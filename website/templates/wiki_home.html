@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Wiki des GMs{% endblock %}
+{% block content %}
+<article class="post featured">
+  <header class="">
+    <h2>Wiki des GMs</h2>
+  </header>
+  <div>
+    <p>
+    Cette section contient les diverses procédures utiles aux GMs pour proposer de nouvelles parties et utiliser les différents bots et intégrations du serveur. Si besoin, contactez <strong>@Admins</strong> sur l'un des salons de la section <strong>La Confrérie  des GMs</strong>.
+    </p>
+  </div>
+</article>
+<section class="posts-line">
+  {% for post in posts %}
+  <article>
+    <header>
+        <h3>{{ post.order }}. <a href="{{ post.href }}">{{ post.title }}</a></h3>
+    </header>
+    <p>{{ post.summary }}</p>
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

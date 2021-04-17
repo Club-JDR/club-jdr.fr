@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}{{ post.title }}{% endblock%}
+{% block content %}
+<div class="row" style="padding-top: 2rem;">
+  {% if post.author == payload['username'] %}
+  <a class="button icon solid fa-edit fit" href="/articles/edit">Modifier</a>
+  {% endif %}
+</div>
+<article class="post featured">
+  <header class="major blog">
+    <span class="date">
+      Le {{ post.date|format_date }}, par 
+      <a href="/articles/by/{{ post.author }}">{{ post.author }}</a>
+    </span>
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.summary }}</p>
+    {% if post.image %}<img class="blog-image" src="{{ post.image }}" alt="{{ post.title }}" />{% endif %}
+  </header>
+  <div class="row content">
+    <div class="post-content">{{ post.content_html|safe }}</div>
+  </div>
+  <hr class="post-end">
+  <div class="tags">
+    {% for tag in post.tags %}
+    <a class="button x-small icon solid fa-tag" href="/articles/tag/{{ tag }}">{{ tag }}</a>
+    {% endfor %}
+  </div>
+</article>
+{% endblock %}

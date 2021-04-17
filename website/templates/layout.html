@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+  <head>
+    {% block head %}
+    <title>Club JDR - {% block title %}{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="icon" type="image/png" href="/static/img/jdr.png" />
+    <link rel="stylesheet" href="/static/css/massively.css" />
+    <link rel="stylesheet" href="/static/css/jdr.css" />
+    {% endblock %}
+  </head>
+  <body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
+
+      {% if 'home' in payload %}
+      <!-- Intro -->
+      <div id="intro">
+        <h1>Club JDR</h1>
+        <p>Bienvenue au Club JDR, une commaunauté francophone dédiée au jeu de rôle sur Discord. <br/><a href="https://discord.gg/jYj3VKTVzC">Rejoignez-nous</a> !</p>
+        <ul class="actions">
+          <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+        </ul>
+      </div>
+      {% endif %}
+
+      <!-- Header -->
+      <header id="header">
+        <a href="/" class="logo">Club <img id="logo" src="/static/img/jdr.png" alt="logo" /> JDR</a>
+      </header>
+
+      <!-- Nav -->
+      <nav id="nav">
+        <ul class="links">
+          <li {% if 'home' in payload %}class="active"{% endif %}><a href="/">Accueil</a></li>
+          <li {% if 'blog' in payload %}class="active"{% endif %}><a href="/articles">Articles</a></li>
+          {% if 'gm' in payload  %}
+          <li {% if 'storage' in payload %}class="active"{% endif %}><a href="/ressources">Ressources</a></li>
+          <li {% if 'wiki' in payload %}class="active"{% endif %}><a href="/wiki">Wiki des GMs</a></li>
+          {% endif%}
+          <li {% if 'links' in payload %}class="active"{% endif %}><a href="/liens">Liens utiles</a></li>
+          <li {% if 'contact' in payload %}class="active"{% endif %}><a href="/contact">Nous contacter</a></li>
+        </ul>
+        <ul class="icons">
+          {% if payload['username'] %}
+          <li>
+            <img src="{{ payload['avatar'] }}" alt="{{ payload['username'] }}" class="rounded-circle floating">
+          </li>
+          <li>
+            <a href="/logout" class="icon solid fa-sign-out-alt tooltip"></a>
+          </li>
+          {% else %}
+          <li>
+            <a href="/login" class="icon solid fa-sign-in-alt tooltip"></a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        {% block content %}
+        {% endblock %}
+      </div>
+
+      <!-- Copyright -->
+      <div id="copyright">
+        <ul>
+          <li>&copy; Club JDR</li>
+          <li>Credits: 
+            <a href="https://html5up.net">HTML5 UP</a>,
+            <a href="https://dnd.wizards.com/">Wizards of the Coast</a>,
+            <a href="https://www.chaosium.com//">Chaosium</a>,
+            <a href="https://www.fantasyflightgames.com/">Fantasy Flight Games</a>,
+            <a href="https://www.focus-home.com/">Focus Home Interactive Studio</a>
+            <a href="https://www.black-book-editions.fr/">Black Book Edition</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.scrollex.min.js"></script>
+    <script src="/static/js/jquery.scrolly.min.js"></script>
+    <script src="/static/js/browser.min.js"></script>
+    <script src="/static/js/breakpoints.min.js"></script>
+    <script src="/static/js/util.js"></script>
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>

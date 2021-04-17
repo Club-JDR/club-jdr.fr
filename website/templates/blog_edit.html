@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>Club JDR - Blog</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="icon" type="image/png" href="/static/img/jdr.png" />
+<link rel="stylesheet" href="/static/css/massively.css" />
+<link rel="stylesheet" href="/static/css/jdr.css" />
+<link rel="stylesheet" href="/static/css/simplemde.min.css" />
+{% endblock %}
+{% block content %}
+<article class="post">
+  <header class="">
+      <h2>Écrire un nouvel article</h2>
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
+  </header>
+  <div>
+    <form method="post" action="/articles/edit">
+        <input type="text" name="title" placeholder="Titre de l'article" {% if post %} value="{{ post.title }}"{% endif %}/>
+      <input type="text" name="summary" placeholder="Résumé de l'article" {% if post %} value="{{ post.summary }}"{% endif %}/>
+      <input type="text" name="tags" placeholder="Tags (séparer chaque tag par une virgule)" {% if post %} value="{{ post.tags|format_tags }}"{% endif %}/>
+      <input type="text" name="image" placeholder="URL de l'illustration (facultatif)" {% if post %} value="{{ post.image }}"{% endif %}/>
+      <input type="hidden" name="author" value="{{ payload['username'] }}" />
+      <input type="hidden" name="date" {% if post %} value="{{ post.date }}"{% else %}value=""{% endif %} />
+      <input type="hidden" name="edit" {% if post %} value="True"{% else %}value=""{% endif %} />
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <textarea name="markdown" id="md-edit" placeholder="Rédigez votre article en Markdown..." rows="12">
+        {% if post %}{{ post.content_md }}{% endif %}
+      </textarea>
+      <input type="submit" {% if post %}value="Enregistrer"{% else %}value="Poster"{% endif %} style="float: right;" />
+    </form>
+  </div>
+</article>
+<script src="/static/js/simplemde.min.js"></script>
+<script>
+var simplemde = new SimpleMDE({ element: document.getElementById("md-edit"), spellChecker: false });
+</script>
+{% endblock %}

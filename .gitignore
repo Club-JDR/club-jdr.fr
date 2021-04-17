@@ -1,0 +1,8 @@
+env
+__pycache__
+content
+wiki
+.scannerwork
+coverage.xml
+.coverage
+junit.xml

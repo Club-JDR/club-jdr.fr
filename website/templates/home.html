@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>Club JDR - Home</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="icon" type="image/png" href="/static/img/jdr.png" />
+<link rel="stylesheet" href="/static/css/massively.css" />
+<link rel="stylesheet" href="/static/css/jdr.css" />
+<link rel="stylesheet" href="/static/css/calendar.css" />
+{% endblock %}
+{% block content %}
+<!-- Featured Post -->
+<article class="post featured">
+  <header class="">
+    <h2>Qui sommes-nous ?</h2>
+  </header>
+  <div>
+    <p>
+    Nous sommes une communautée francophone de joueurs et de maîtres du jeu.
+    Nous utilisons <a href="https://discord.com/">Discord</a> et principalement <a href="https://roll20.net">Roll20</a> pour jouer régulièrement à nos jeux de rôles préférés, que ce soit en campagne ou en scénarios indépendants.
+    </p>
+  </div>
+</article>
+
+<!-- Posts -->
+<section class="posts">
+  <article>
+    <header class="">
+      <h2>Nous rejoindre</h2>
+    </header>
+    <div>
+      <p>
+        Que vous soyez joueurs ou maîtres du jeu, débutants ou confirmés, réguliers ou occasionnels, plutôt med-fan, contemporain ou sci-fi, vous êtes les bienvenues sur notre serveur.<br/>
+        Pour nous rejoindre, rien de plus simple : <br/>
+        Créez un compte 
+        <a href="https://discord.com/">
+          <img height="32" class="inline" src="/static/img/discord.png" alt="Discord" />
+        </a> si ce n'est pas déjà fait, puis cliquez sur le bouton ci-dessous.
+      </p>
+      <ul class="actions special">
+        <li>
+          <a href="https://discord.gg/jYj3VKTVzC" class="button">Rejoignez-nous</a>.
+        </li>
+      </ul>
+    </div>
+  </article>
+  <article id="calendar">
+    <header>
+      <h2>L'Agenda du CLub</h2>
+    </header>
+    <div id="gcal"></div>
+  </article>
+</section>
+<article id="games" class="post featured">
+  <header class="">
+    <h2>Nos jeux</h2>
+  </header>
+  <div>
+    <p>
+      Nous jouons principalement à <strong>D&ampD 5E</strong>, <strong>l'Appel de Cthulhu</strong>, <strong>Cthulhu Hack</strong> et les différentes versions de <strong>Chroniques Oubliées</strong>, mais régulièrement, des parties d'autres systèmes sont proposées par nos MJs.
+    </p>
+    <div class="row">
+      <div class="col-3 col-12-small"><img class="image fit" src="/static/img/co.png" alt="Chroniques Obliées" /></div>
+      <div class="col-3 col-12-small"><img class="image fit" src="/static/img/dnd.png" alt="Dungeons & Dragons" /></div>
+      <div class="col-3 col-12-small"><img class="image fit" src="/static/img/cthulhu.png" alt="L'Appel de Cthulhu" /></div>
+      <div class="col-3 col-12-small"><img class="image fit" src="/static/img/hack.png" alt="Cthulhu Hack" /></div>
+    </div>
+  </div>
+</article>
+<script src="/static/js/calendar.js"></script>
+<script src="/static/js/calendar-locales.js"></script>
+<script src="/static/js/gcal.js"></script>
+{% endblock %}

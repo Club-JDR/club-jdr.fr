@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block title %}Articles{% endblock%}
+{% block content %}
+<article class="post featured">
+  <header>
+    {% if queried_tag %}
+    <h2>Articles avec le tag "{{ queried_tag }}"</h2>
+    {% elif queried_author %}
+    <h2>Articles de "{{ queried_author }}"</h2>
+    {% else %}
+    <h2>Tous les articles</h2>
+    {% endif %}
+  </header>
+</article>
+<div class="row">
+  <section class="posts-line col-8">
+    {% for post in posts %}
+    <article>
+      <header>
+        <h3><a href="{{ post.href }}">{{ post.title }}</a></h3>
+        <p>Le {{ post.date|format_date }}, par <a href="/articles/by/{{ post.author }}">{{ post.author }}</a></p>
+        {% if post.image %}
+        <img class="blog-image" src="{{ post.image }}" alt="{{ post.title }}"/>
+        {% endif %}
+      </header>
+      <p>{{ post.summary }}</p>
+      <div class="tags">
+        {% for tag in post.tags %}
+        <a class="button x-small icon solid fa-tag" href="/articles/tag/{{ tag }}">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    </article>
+    <hr>
+    {% endfor %}
+  </section>
+  <section class="col-4">
+    {% if payload['username'] and 'gm' in payload%}
+    <a class="button icon solid fa-plus" href="/articles/edit">Écrire un article</a>
+    <hr>
+    {% endif %}
+    <h3>Tags</h3>
+    {% for tag in tag_dict %}
+    <a class="button x-small icon solid fa-tag" href="/articles/tag/{{ tag }}">{{ tag }} ({{ tag_dict[tag] }})</a>
+    {% endfor %}
+    <hr>
+    <h3>Auteurs</h3>
+    {% for author in author_dict %}
+    <a class="button x-small icon solid fa-tag" href="/articles/by/{{ author }}">{{ author }} ({{ author_dict[author] }})</a>
+    {% endfor %}
+  </section>
+</div>
+{% endblock %}
