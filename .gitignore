@@ -1,6 +1,5 @@
 env
 __pycache__
-wiki
 .scannerwork
 coverage.xml
 .coverage
